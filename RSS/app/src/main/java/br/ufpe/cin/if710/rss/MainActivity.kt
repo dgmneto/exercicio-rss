@@ -22,6 +22,7 @@ class MainActivity : Activity() {
         RSS_FEED = getString(R.string.rssfeed)
     }
 
+    // estamos triggando o getRssFeed e definindo o callback a ser executado
     override fun onStart() {
         super.onStart()
         try {
@@ -38,6 +39,7 @@ class MainActivity : Activity() {
         }
     }
 
+    // adapter para executar o mapeamento do formar saído do fetch para a tela
     inner class ItemRSSListAdapter(private val itemsRSS: List<ItemRSS>): RecyclerView.Adapter<ItemListViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemListViewHolder {
             val view = layoutInflater.inflate(R.layout.itemlista, parent, false)

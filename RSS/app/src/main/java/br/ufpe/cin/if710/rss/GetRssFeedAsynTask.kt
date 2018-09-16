@@ -9,6 +9,7 @@ import java.nio.charset.Charset
 import java.util.*
 
 class GetRssFeedAsynTask(val callback: (v: List<ItemRSS>) -> Unit): AsyncTask<String, Void, List<ItemRSS>>() {
+    // código originário do MainActivity#getRssFeed
     override fun doInBackground(vararg p0: String?): List<ItemRSS> {
         var ins: InputStream? = null
         var rssFeed = ""
@@ -31,9 +32,9 @@ class GetRssFeedAsynTask(val callback: (v: List<ItemRSS>) -> Unit): AsyncTask<St
         return ParserRSS.parse(rssFeed)
     }
 
+    // código para executar callback por quem está acima na stack
     override fun onPostExecute(result: List<ItemRSS>?) {
         super.onPostExecute(result)
-        println("OPSSS$result")
         if (result != null) this.callback(result)
     }
 }
